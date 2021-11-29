@@ -1,5 +1,7 @@
 package ies.triana.pooexplicacion.datos;
 
+import java.util.Objects;
+
 import javax.swing.plaf.basic.BasicToolBarSeparatorUI;
 
 public class Caja {
@@ -61,5 +63,34 @@ public class Caja {
 	public double obtenerVolumen() {
 		return (ancho * largo * alto);
 	}
+	
+	public boolean equals (Caja aux) {
+		if (this.ancho == aux.ancho && this.alto == aux.alto && this.largo == aux.largo) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(alto, ancho, largo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Caja other = (Caja) obj;
+		return Double.doubleToLongBits(alto) == Double.doubleToLongBits(other.alto)
+				&& Double.doubleToLongBits(ancho) == Double.doubleToLongBits(other.ancho)
+				&& Double.doubleToLongBits(largo) == Double.doubleToLongBits(other.largo);
+	}
+	
+	
 
 }
